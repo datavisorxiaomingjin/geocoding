@@ -13,7 +13,7 @@
     <dependency>
         <groupId>io.patamon.geocoding</groupId>
         <artifactId>geocoding</artifactId>
-        <version>1.1.4</version>
+        <version>1.1.5</version>
     </dependency>
 </dependencies>
 
@@ -21,7 +21,7 @@
     <repository>
         <id>patamon.release.repository</id>
         <name>github release repository</name>
-        <url>https://raw.github.com/icemimosa/maven/release/</url>
+        <url>https://raw.github.com/datavisorxiaomingjin/maven/release/</url>
     </repository>
 </repositories>
 ```
