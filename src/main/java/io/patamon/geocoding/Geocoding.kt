@@ -25,6 +25,19 @@ object Geocoding {
     }
 
     /**
+     * 地址的标准化, 将不规范的地址清洗成标准的地址格式, 返回String
+     */
+    @JvmStatic
+    fun normalizedString(address: String): String {
+        val addr = normalizing(address)
+        if (addr != null) {
+            return addr.toMyString()
+        } else {
+            return "invalid address"
+        }
+    }
+
+    /**
      * 将地址进行切分
      */
     @JvmStatic
@@ -32,6 +45,7 @@ object Geocoding {
         val addr = normalizing(address) ?: return null
         return Context.getComputer().analyze(addr)
     }
+
     @JvmStatic
     fun analyze(address: Address?): Document? {
         address ?: return null
@@ -46,6 +60,7 @@ object Geocoding {
         val compute = Context.getComputer().compute(normalizing(addr1), normalizing(addr2))
         return compute.similarity
     }
+
     @JvmStatic
     fun similarity(addr1: Address?, addr2: Address?): Double {
         val compute = Context.getComputer().compute(addr1, addr2)
@@ -59,6 +74,7 @@ object Geocoding {
     fun similarityWithResult(addr1: String, addr2: String): MatchedResult {
         return Context.getComputer().compute(normalizing(addr1), normalizing(addr2))
     }
+
     @JvmStatic
     fun similarityWithResult(addr1: Address?, addr2: Address?): MatchedResult {
         return Context.getComputer().compute(addr1, addr2)
@@ -79,7 +95,8 @@ object Geocoding {
     @JvmStatic
     fun addRegionEntry(id: Long, parentId: Long, name: String, type: RegionType = RegionType.Undefined, alias: String = "") {
         val persister = this.getContext().getPersister()
-        persister.getRegion(parentId) ?: throw IllegalArgumentException("Parent Address is not exists, parentId is $parentId")
+        persister.getRegion(parentId)
+                ?: throw IllegalArgumentException("Parent Address is not exists, parentId is $parentId")
         if (name.isBlank()) {
             throw IllegalArgumentException("name should not be blank.")
         }

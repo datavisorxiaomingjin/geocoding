@@ -13,27 +13,36 @@ open class Address : Serializable {
     // 省
     var provinceId: Long? = null
     var province: String? = null
+
     // 市
     var cityId: Long? = null
     var city: String? = null
+
     // 区
     var districtId: Long? = null
     var district: String? = null
+
     // 街道
     var streetId: Long? = null
     var street: String? = null
+
     // 乡镇
     var townId: Long? = null
     var town: String? = null
+
     // 村
     var villageId: Long? = null
     var village: String? = null
+
     // 道路
     var road: String? = null
+
     // 道路号
     var roadNum: String? = null
+
     // 建筑物信息
     var buildingNum: String? = null
+
     // 切分剩余未解析出来的地址
     var text: String? = null
 
@@ -94,6 +103,37 @@ open class Address : Serializable {
                 "\n\tbuildingNum=$buildingNum, " +
                 "\n\ttext=$text\n)"
 
+    }
+
+    fun toMyString(): String {
+        var res = ""
+        if (province != null) {
+            res += province
+        }
+        if (city != null) {
+            res += city
+        }
+        if (district != null) {
+            res += district
+        }
+        if (town != null) {
+            res += town
+        } else if (village != null) {
+            res += village
+        }
+        if (road != null) {
+            res += road
+            if (roadNum != null) {
+                res += roadNum
+            }
+        }
+        if (text != null) {
+            res += text
+        }
+        if (buildingNum != null) {
+            res += buildingNum
+        }
+        return res
     }
 
     override fun equals(other: Any?): Boolean {
