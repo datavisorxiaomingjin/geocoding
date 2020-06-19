@@ -60,27 +60,6 @@
             <artifactId>lucene-analyzers-smartcn</artifactId>
             <version>${lucene.version}</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.apdplat</groupId>
-            <artifactId>word</artifactId>
-            <version>${word.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.lucene</groupId>
-                    <artifactId>lucene-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.lucene</groupId>
-                    <artifactId>lucene-queryparser</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.lucene</groupId>
-                    <artifactId>lucene-analyzers-common</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        -->
         <dependency>
             <groupId>com.janeluo</groupId>
             <artifactId>ikanalyzer</artifactId>
@@ -183,9 +162,9 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
+            <id>local-repo-release</id>
             <name>GitHub Maven Packages</name>
-            <url>https://maven.pkg.github.com/datavisorxiaomingjin/geocoding</url>
+            <url>file:///Users/xiaoming/geocoding/maven-repo/</url>
         </repository>
     </distributionManagement>
 </project>
